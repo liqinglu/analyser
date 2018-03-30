@@ -1,11 +1,23 @@
 import numpy as np
 import pandas as pd
 import json
+import sys
 import urllib
 import time
+import re
 from datetime import datetime
 
-ff = open("./data/002509.json", 'r')
+datafile = None
+pattern = re.compile(r'\d+')
+yourwant = raw_input("Input a six digit stock number:\n")
+m = pattern.match(yourwant)
+if m is not None:
+    datafile = "%s%s%s" % ( "./data/", m.group(0), ".json" )
+else:
+    print "Input error!"
+    sys.exit()
+
+ff = open(datafile, 'r')
 data_str = ff.read()
 data_nonascii = ''.join([i if ord(i) < 128 else 'x' for i in data_str])
 data = json.loads(data_nonascii[21:-2])
