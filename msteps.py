@@ -5,6 +5,7 @@ import urllib
 import time
 from datetime import datetime
 
+print "in this version, no more update"
 ff = open("./data/002509.json", 'r')
 data_str = ff.read()
 data_nonascii = ''.join([i if ord(i) < 128 else 'x' for i in data_str])
