@@ -33,3 +33,4 @@ data.loc[stddata['incr_rate'] < -0.101, 'incr_rate'] = 0
 # (1+data['incr_rate']).cumprod()[-1]
 ## add 11111
 ## add 22222
+### add 33333
