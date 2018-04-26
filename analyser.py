@@ -24,7 +24,7 @@
         data.loc[stddata['incr_rate'] < -0.101, 'incr_rate'] = 0
 
     CopyRight:
-        By liqinglu
+        By liqinglu 2018
 '''
 
 import sys,getopt

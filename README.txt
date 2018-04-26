@@ -10,7 +10,6 @@ stock_list.csv      -- configuration file, stock list is in it
 stock_analyser.csv  -- output file, stock analyser data is in it
 
 
-
 ## manual steps:
 In [1]: import numpy as np
 
@@ -36,5 +35,4 @@ In [11]: data_hq = pd.DataFrame(data[0]['hq'],columns=['date','start','end','inc
 
 In [12]:
 
-## want to add some comment in analyser
-
+## some other steps
