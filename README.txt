@@ -35,10 +35,3 @@ In [11]: data_hq = pd.DataFrame(data[0]['hq'],columns=['date','start','end','inc
 
 In [12]:
 
-## some other steps
-## want to add some comment in analyser
-## I wnat to cry
-
-## 20180421
-
-## no, I can't do that

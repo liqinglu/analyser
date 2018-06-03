@@ -128,6 +128,9 @@ def getLink(name):
 
 # calculate the gain rate during the period that selected
 def cumprodresult(fid, stock, data):
+    '''
+    accumulative profit in history
+    '''
     cumprslt = (1+data['incr_rate']).cumprod()[-1]
     print "  Cumprod : [%s]" % (cumprslt)
     fid.write(",%s"%(cumprslt))
@@ -136,6 +139,9 @@ def cumprodresult(fid, stock, data):
 
 # calculate vibrate rate, highest - lowest / lowest
 def vibrate(fid, stock, data):
+    '''
+    vibrate ratio, compare among max, min and current
+    '''
     result = (data['highest']-data['lowest'])/data['lowest']
     print "  Vibrate : [%s] [%s] [%s]" % (result.max(),result.min(),result[-1])
     fid.write(",%s,%s,%s"%(result.max(),result.min(),result[-1]))
@@ -144,6 +150,9 @@ def vibrate(fid, stock, data):
 
 # calculate ratio between current price and mean price of the lowest 30 days price
 def mins(fid, stock, data):
+    '''
+    the ratio between current price and the average price of the minimum 30 days prices in history
+    '''
     curvalue = data['end'][-1]
     if stock == "000001" or stock == "399001":
         print "  Mins : [%s] [%s] [%s]"%(0, 0, curvalue)
@@ -158,6 +167,9 @@ def mins(fid, stock, data):
     return
 
 def byear(fid, stock, data):
+    '''
+    first year the stock can be exchanged
+    '''
     byearindex = data.index
     strplist = [ datetime.strptime(x,"%Y-%m-%d") for x in byearindex ]
     byear = strplist[0].year
@@ -166,7 +178,16 @@ def byear(fid, stock, data):
 
     return
 
-methods = {"accumulativeprofit":cumprodresult,"vib":vibrate,"mins":mins,"beginyear":byear}
+def indexcor(fid, stock, data):
+    '''
+    check correlation with index
+
+    larger the num is, less likely correlation with index;
+    smaller the num is, more likely correlation with index;
+    '''
+    pass
+
+methods = {"accumulativeprofit":cumprodresult,"vib":vibrate,"mins":mins,"beginyear":byear,"indexcorrelation":indexcor}
 
 def getstockfid():
     global FILE
